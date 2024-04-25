@@ -1,33 +1,22 @@
-import { Link, Outlet, useNavigate } from 'react-router-dom'
-import { ClerkProvider, SignedIn, SignedOut, UserButton } from '@clerk/clerk-react'
- 
-const PUBLISHABLE_KEY : String | undefined = process.env.REACT_CLERK_PUBLISHABLE_KEY
- 
-if (!PUBLISHABLE_KEY) {
-  throw new Error("Missing Publishable Key")
-}
- 
+import { Link, Outlet} from 'react-router-dom'
+import Navbar from '../components/Navbar/Navbar'
 export default function RootLayout() {
-  const navigate = useNavigate();
  
   return (
-    <ClerkProvider navigate={navigate} publishableKey={PUBLISHABLE_KEY}>
-      <header className="header">
-        <div>
-          <div>
-            <p>Clerk + React + React Router App</p>
-          </div>
-          <SignedIn>
-            <UserButton afterSignOutUrl='/sign-in' />
-          </SignedIn>
-          <SignedOut>
-            <Link to="/sign-in">Sign In</Link>
-          </SignedOut>
-        </div>
-      </header>
+    <>
+      <Navbar/>
+      <p className='h1'>NAVBAAR</p>
+      {console.log("LOADED")}
+      <ul>
+        <li><Link to="/sign-up">Sign Up</Link></li>
+        <li><Link to="/sign-in">Sign In</Link></li>
+        <li><Link to="/contact">Contact</Link></li>
+      </ul>
       <main>
         <Outlet />
       </main>
-    </ClerkProvider>
+      <h1>Footer</h1>
+    </>
+    
   )
 }

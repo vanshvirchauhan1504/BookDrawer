@@ -13,7 +13,11 @@ const MobileNav = () => {
 
     return (
       <>
-      
+      <div className="header-mobile container-fluid">
+        <div className="logo desktop">
+            <h2>BookDrawer</h2>
+        </div>
+    </div>
     
       </>
     )
